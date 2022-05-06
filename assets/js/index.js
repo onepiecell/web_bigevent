@@ -1,6 +1,7 @@
 ((function () {
     getUserInfo()
-    $('.layui-nav-img').hide()
+    // document.querySelector('.layui-nav-img').style.display = 'none'
+    // document.querySelector('.userInfo .layui-nav-img').style.display = 'none'
     // $('.text-avatar').hide()
 })())
 
@@ -16,7 +17,7 @@ function getUserInfo() {
             if (res.status !== 0) {
                 return layui.layer.msg('获取用户信息失败！')
             }
-            // console.log(res)
+            console.log(res)
             // 调用 renderAvatar渲染用户头像
 
             renderAvatar(res.data)
@@ -41,9 +42,11 @@ function renderAvatar(user) {
     // console.log(name);
 
     $('#welcome').html('欢迎&nbsp;&nbsp' + name)
-
     if (user.user_pic !== null) {
-        $('.layui-nav-img').arrt('src', user.user_pic).show()
+        // $('.layui-nav-img').arrt('src', user.user_pic).show()
+        // console.log(user.user_pic)
+        let img = document.querySelector('.userInfo .layui-nav-img').src = user.user_pic
+        let img1 = document.querySelector('.layui-nav-img').src = user.user_pic
         $('.text-avatar').hide()
     } else {
         $('.layui-nav-img').hide()
